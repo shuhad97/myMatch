@@ -1,0 +1,69 @@
+<!doctype html>
+
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>mymatch</title>
+    
+</head>
+<body>
+
+
+<main>
+        
+<div class = "container" >
+
+      <div class = "row">
+          <div class="col-md-11">
+        <div  class="row justify-content-center">
+          <h1 class="display-2">Welcome to MyMatch!</h1>
+        </div>
+        </div>
+      </div>
+
+  
+
+    <div class = "row"> 
+
+     <div class="col-md-6">
+       
+      <div class="jumbotron">
+        <div  class="row justify-content-center">
+        <h1 class="display-4">Already registered? </h1>
+         <a href = {% url 'login' %}><button  type="button" class="btn btn-primary">Login</button></a>
+        </div>
+        </div>
+     </div>
+    
+     <div class="col-md-5">
+      <div class="jumbotron">
+        <div  class="row justify-content-center">
+
+        <h1 class="display-4">Wanna Register?</h1>
+        <a href = {% url 'signup' %}><button type="button" class="btn btn-info">Sign up</button></a>
+        
+        </div>
+        </div>  
+      </div>
+     
+    
+    </div>
+    
+</div>
+
+
+    
+  
+
+</main>
+
+
+</body>
+
+
+
+  
+  
+  </script>
+
+</html>
