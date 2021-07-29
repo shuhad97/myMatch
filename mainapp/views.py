@@ -84,13 +84,16 @@ def loginProcess(request):
 #Sign up processing
 @csrf_exempt
 def signupProcess(request):
-    success = False
-    if not ('email' in request.POST and 'password' in request.POST):
-        pass
+    success = None
+    
+    postData = request.POST
+    
+    if ('' in postData.values() ):
+    
+        success = False
 
     else:
         
-        postData = request.POST
 
         email = postData.get('email')
         firstname = postData.get('name')
@@ -114,11 +117,11 @@ def signupProcess(request):
             module = Module.objects.get(name = selected)
             currentUser.modules.add(module)
         
-     
+        success = True 
         
-        return JsonResponse({'success' : True })
+        
 
-
+    return JsonResponse({'success' : success })
 
 def mymatches(request):
     
