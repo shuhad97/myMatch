@@ -11,6 +11,7 @@ from django.shortcuts import redirect
 from django.views.decorators.csrf import csrf_exempt
 
 
+# Home/Landing page
 
 def index(request):
 
@@ -47,7 +48,7 @@ def profile(request):
                 'userDOB': profileData.dateOfBirth}))
 
 
-
+#Login processing 
 def loginProcess(request):
     
     
@@ -80,7 +81,7 @@ def loginProcess(request):
 
     
 
-
+#Sign up processing
 @csrf_exempt
 def signupProcess(request):
     success = False
@@ -89,14 +90,16 @@ def signupProcess(request):
 
     else:
         
-        email = request.POST.get('email')
-        firstname = request.POST.get('name')
-        password = request.POST.get('password')
-        moduleList = request.POST.getlist('courses[]')
-        dob = request.POST.get('dob')
-        gender = request.POST.get('gender')
+        postData = request.POST
 
-        print(request.POST)
+        email = postData.get('email')
+        firstname = postData.get('name')
+        password = postData.get('password')
+        moduleList = postData.getlist('courses[]')
+        dob = postData.get('dob')
+        gender = postData.get('gender')
+
+        
         userInstance = User(username = email ,first_name = firstname, email = email) 
         userInstance.save()
         userInstance.set_password(password)
@@ -114,6 +117,8 @@ def signupProcess(request):
      
         
         return JsonResponse({'success' : True })
+
+
 
 def mymatches(request):
     
