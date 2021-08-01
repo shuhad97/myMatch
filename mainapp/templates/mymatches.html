@@ -17,7 +17,7 @@
                                   <a class="nav-link" href="{% url 'mymatches' %}"> My Matches <span class="sr-only">(current)</span></a>
                           </li>
                           <li class="nav-item active">
-                                  <a class="nav-link" href="{% url 'profile' %}">Update my details <span class="sr-only">(current)</span></a>
+                                  <a class="nav-link" href="{% url 'profile' %}"> My details <span class="sr-only">(current)</span></a>
                              </li>
                       </ul>
                 </div>
@@ -29,18 +29,11 @@
         <div class = "row">
         <div class = "form-inline">
         <div class ="filterfields">
-                
                 <main>
-                
-                
-                                
-                       
-                        
+                        <form> 
                          <div class="col-md-11">      
                                 <label>Gender</label>
                                 <input type ="text" class ="form-control" id="gender" placeholder="Gender">
-                       
-
                           
                                 <label>Age Range</label>
                                 <input type ="text" class ="form-control" id="min" placeholder="Min">
@@ -50,11 +43,7 @@
         </div>               
         </div>
         </div>
-      
-              
                 <div id = 'listArea'> 
-
-
                 </div>
                 </div>
       
@@ -132,10 +121,10 @@ const modulesLoader = (modules) =>{
 }
 
 
-$('#FilterData').on('submit', (event)=>{
+$('.filterfields').on('submit', (event)=>{
         event.preventDefault()
 
-
+        //Fields for filtering out data
         const filterFields = {
 
                 gender : document.getElementById('gender').value,

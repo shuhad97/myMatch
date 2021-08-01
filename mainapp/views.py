@@ -150,17 +150,20 @@ def getMatches(request):
     currentUserModules = currentUserProfile.modules.all()
 
     if(request.method == 'POST'):
+        #Form filtering
         filter = True
         gender = request.POST.get('gender')
         min = int(request.POST.get('min'))
         max = int(request.POST.get('max'))
 
-        allProfiles = Profile.objects.filter(gender = gender ).exclude(user_id=currentUserId)   
+        profileList = Profile.objects.filter(gender = gender ).exclude(user_id=currentUserId)   
 
     else :
-        allProfiles = Profile.objects.exclude(user_id=currentUserId)   
+        #Loads all profiles
+        profileList = Profile.objects.exclude(user_id=currentUserId)   
      
-    for profile in allProfiles:
+    for profile in profileList:
+
         matchingCount = 0
         profileModules = profile.modules.all()
         
@@ -195,7 +198,7 @@ def getMatches(request):
             matchingData.append({'firstName': firstName, 'gender' : gender, 'age': age, 'percentage': round(percentage), 'modules':modules })
                 #Within list there are python dictionary
 
-                
+    print(matchingData)
 
     return JsonResponse(matchingData, safe = False)
 
