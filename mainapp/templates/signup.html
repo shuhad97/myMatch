@@ -149,7 +149,7 @@ $.ajax(
         } else{
            console.log('error')
            alertRender = "alert alert-danger"
-           alertMessage = "Error"
+           alertMessage = "Error: "+ data.errorMessage  
         }
 
         document.getElementById("message").className = alertRender

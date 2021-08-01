@@ -85,12 +85,16 @@ def loginProcess(request):
 @csrf_exempt
 def signupProcess(request):
     success = None
+    errorMessage =  None
     
     postData = request.POST
     
-    if ('' in postData.values() ):
+    if '' in postData.values() :
     
         success = False
+        errorMessage = "Please make sure all field are filled out"
+
+             
 
     else:
         
@@ -113,7 +117,7 @@ def signupProcess(request):
         currentUser = Profile(user = userInstance, gender = gender, dateOfBirth= dob) 
         currentUser.save()
         for selected in moduleList:
-            print(selected)
+            
             module = Module.objects.get(name = selected)
             currentUser.modules.add(module)
         
@@ -121,7 +125,8 @@ def signupProcess(request):
         
         
 
-    return JsonResponse({'success' : success })
+    return JsonResponse({'success' : success,
+    'errorMessage' : errorMessage })
 
 def mymatches(request):
     
@@ -175,7 +180,7 @@ def getMatches(request):
                 continue #Skips this iteration
 
 
-            print(profile.user.first_name)
+           
             percentage = (matchingCount / currentUserModules.count() ) * 100
             firstName = profile.user.first_name
             gender = profile.gender
