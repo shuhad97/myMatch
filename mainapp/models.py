@@ -33,6 +33,6 @@ class Profile (models.Model):
 
  
 
-#Read on why return method in django models
+
 
 
