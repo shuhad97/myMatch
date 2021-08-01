@@ -88,16 +88,19 @@ def signupProcess(request):
     errorMessage =  None
     
     postData = request.POST
-    
+
+    #Most validation occurs here for empty value and email that exists    
     if '' in postData.values() :
     
         success = False
         errorMessage = "Please make sure all field are filled out"
 
-             
+    elif User.objects.filter(email = postData.get('email') )  :
+        
+        errorMessage = "Email already in use, please login!"
 
     else:
-        
+    #Data inputted into database
 
         email = postData.get('email')
         firstname = postData.get('name')
