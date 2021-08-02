@@ -159,7 +159,7 @@ def getMatches(request):
         profileList = Profile.objects.filter(gender = gender ).exclude(user_id=currentUserId)   
 
     else :
-        #Loads all profiles
+        #Loads all profiles except current user
         profileList = Profile.objects.exclude(user_id=currentUserId)   
      
     for profile in profileList:
@@ -210,3 +210,6 @@ def courses(request):
 
     return JsonResponse(moduleList, safe=False)
   
+def logout(request):
+    request.session.flush()
+    return render(request,'login.html')
